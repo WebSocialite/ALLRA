@@ -16,8 +16,8 @@ export function ProductSearchInput({
     <main className={cn('relative', className)} {...props}>
       <Input
         value={term}
-        onChange={async (e) => {
-          await handleTermChange(e.target.value)
+        onChange={ (e) => {
+           handleTermChange(e.target.value)
         }}
         className={'h-12 pl-12 text-base'}
         placeholder={'Search product'}

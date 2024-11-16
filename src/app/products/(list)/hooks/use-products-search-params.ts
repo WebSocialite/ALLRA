@@ -14,10 +14,10 @@ export const useProductsSearchParams = () => {
     })
   )
 
-  const handleTermChange = async (term: string) => {
+  const handleTermChange =  (term: string) => {
     if (q === term) return
-    await setPage(1)
-    await setQ(term)
+     setPage(1)
+     setQ(term)
   }
 
   return {
