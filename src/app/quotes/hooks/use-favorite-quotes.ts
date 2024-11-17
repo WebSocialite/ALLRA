@@ -1,32 +1,35 @@
-export const useFavoriteQuotes = () => {
-  return [
-    {
-      id: 31,
-      quote:
-        'The End Of Life Is To Be Like God, And The Soul Following God Will Be Like Him.',
-      author: 'Socrates',
-    },
-    {
-      id: 32,
-      quote:
-        'Let us sacrifice our today so that our children can have a better tomorrow.',
-      author: 'Abdul Kalam',
-    },
-    {
-      id: 33,
-      quote:
-        'Your task is not to seek for love, but merely to seek and find all the barriers within yourself that you have built against it.',
-      author: 'Rumi',
-    },
-    {
-      id: 34,
-      quote: 'In every religion there is love, yet love has no religion.',
-      author: 'Rumi',
-    },
-    {
-      id: 35,
-      quote: 'Everything in the universe is within you. Ask all from yourself.',
-      author: 'Rumi',
-    },
-  ]
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Quote } from './use-infinite-quotes';
+
+
+export const handleFavoriteToggle = (quote: Quote) => {
+  const storedFavorites: Quote[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+  const updatedFavorites = [...storedFavorites];
+
+  const isAlreadyFavorite = storedFavorites.some((fav) => fav.id === quote.id);
+
+  if (isAlreadyFavorite) {
+    const index = updatedFavorites.findIndex((fav) => fav.id === quote.id);
+    updatedFavorites.splice(index, 1);
+  } else {
+    updatedFavorites.push(quote);
+  }
+
+  localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+};
+
+export function useFavoriteQuotes(): Quote[] {
+  const [favorites, setFavorites] = useState<Quote[]>([]);
+
+  useEffect(() => {
+    // Retrieve and parse favorites from localStorage
+    const storedFavorites: Quote[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    setFavorites(storedFavorites);
+  }, []);
+
+  return favorites;
 }
+
