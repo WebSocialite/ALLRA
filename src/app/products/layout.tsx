@@ -19,8 +19,8 @@ export default function ProductLayout({ children }: PropsWithChildren) {
       <header>
         <Link href={'/products'} className={'my-10 flex items-center gap-2'}>
           <Image src={'logo.svg'} alt={'logo'} width={50} height={50} priority  style={{
-    width: "50px", // Modify as needed
-    height: "auto", // Maintain aspect ratio
+    width: "50px", 
+    height: "auto", 
   }} />
           <h1
             className={cn(
