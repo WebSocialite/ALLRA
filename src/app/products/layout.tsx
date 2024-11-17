@@ -18,7 +18,10 @@ export default function ProductLayout({ children }: PropsWithChildren) {
     <>
       <header>
         <Link href={'/products'} className={'my-10 flex items-center gap-2'}>
-          <Image src={'/logo.svg'} alt={'marget'} width={50} height={50} />
+          <Image src={'logo.svg'} alt={'logo'} width={50} height={50} priority  style={{
+    width: "50px", // Modify as needed
+    height: "auto", // Maintain aspect ratio
+  }} />
           <h1
             className={cn(
               rubikMoonrocks.className,
